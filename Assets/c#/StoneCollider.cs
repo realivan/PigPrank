@@ -1,0 +1,3 @@
+﻿using UnityEngine; using System.Collections;  public class StoneCollider : MonoBehaviour { 	[SerializeField] public Stone stone; 	int stoneLayer;  	void Start () { 		stoneLayer = stone.layer; 	} 	 	void OnTriggerEnter2D(Collider2D other) { 		if (other.CompareTag("Player")) { 			Pig pig = other.GetComponent<Pig>();
+            if (pig.thisTransform.position.y < stone.thisTransform.position.y)                 pig.sr.sortingOrder = stoneLayer+1;             else pig.sr.sortingOrder = stoneLayer-1;
+        } 	} } 
